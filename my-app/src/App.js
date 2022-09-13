@@ -1,7 +1,6 @@
 import './App.css';
 import { Button, Grid, TextField } from '@mui/material'
-import {  useState } from 'react';
-import axios from "axios";
+import { useState } from 'react';
 import RankList from './RankList';
 
 
@@ -18,7 +17,7 @@ function App() {
     // axios.get('https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&titles=NASA&format=json&callback=callback', { headers })
     //   .then(response => console.log(response))
 
-      //Get CORS error - so add just mock data for test functional
+    //Get CORS error - so add just mock data for test functional
     ranksWord(mockText)
 
     setTitle('')
@@ -27,7 +26,7 @@ function App() {
   //Function that create map with key,value(word,counter)
   const addToRank = (data) => {
     let rankList = {}
-    data.map(word => {
+    data.forEach(word => {
       //if word exist increment counter
       if (rankList[word]) {
         rankList = { ...rankList, [word]: rankList[word] + 1 }
@@ -66,7 +65,7 @@ function App() {
         value={title}
         onChange={(e) => setTitle(e.target.value)} />
       <Button
-      sx={{margin:'10px'}}
+        sx={{ margin: '10px' }}
         onClick={handleClick}>
         Submit
       </Button>
